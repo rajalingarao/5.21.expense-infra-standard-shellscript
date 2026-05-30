@@ -3,7 +3,7 @@
   - expense-db
   - expense-backend
   - expense-frontend
-  - expense-ansible
+  - expense-bastion
 
   db:
   - name: db_backend_3306

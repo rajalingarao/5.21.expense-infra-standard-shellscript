@@ -17,7 +17,7 @@ module "mysql_instance" {
 module "records" {
   source  = "terraform-aws-modules/route53/aws//modules/records"
   version = "2.11.1"
-  #zone_name = var.zone_name
+  zone_id = var.zone_id
 
   records = [
     {
@@ -29,4 +29,5 @@ module "records" {
         ]
     }
   ]
+  depends_on = [module.mysql_instance]
 }

@@ -36,3 +36,16 @@ for i in 01-vpc/ 02-sg/ 03-bastion/ 04-mysql/ 05-backend/ 06-frontend/ ; do cd $
 ```
 for i in  06-frontend/ 05-backend/ 04-mysql/ 03-bastion/ 02-sg/ 01-vpc/ ; do cd $i; terraform destroy -auto-approve; cd .. ; done 
 ```
+
+# Login into mysql server and troubleshoot the data.
+```
+mysql -h db.lithesh.shop -u root -pExpenseApp@1
+```
+
+```
+use transactions;
+```
+
+```
+select * from transactions;
+```

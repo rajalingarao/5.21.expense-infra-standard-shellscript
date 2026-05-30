@@ -12,3 +12,6 @@ variable "common_tags" {
     Terraform = "true"
   }
 }
+variable "zone_id" {
+  default = "Z012785114HGZTDQ8KSQH"
+}

@@ -15,6 +15,6 @@ variable "common_tags" {
   }
 }
 
-variable "zone_name" {
-  default = "lithesh.shop"
+variable "zone_id" {
+  default = "Z012785114HGZTDQ8KSQH"
 }
