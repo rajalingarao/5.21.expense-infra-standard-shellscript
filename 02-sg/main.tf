@@ -50,7 +50,7 @@ module "bastion" {
 # MySQL Security Group Rules
 ########################################
 
-# Allow Backend to connect to MySQL
+# Allow Backend to connect to MySQL(services connect each other)
 resource "aws_security_group_rule" "mysql_backend_3306" {
   type                     = "ingress"
   from_port                = 3306
@@ -60,7 +60,7 @@ resource "aws_security_group_rule" "mysql_backend_3306" {
   security_group_id        = module.mysql.sg_id
 }
 
-# Allow Bastion to connect to MySQL
+# Allow Bastion to connect to MySQL(services connect each other)
 resource "aws_security_group_rule" "mysql_bastion_3306" {
   type                     = "ingress"
   from_port                = 3306
@@ -84,7 +84,7 @@ resource "aws_security_group_rule" "mysql_bastion_22" {
 # Backend Security Group Rules
 ########################################
 
-# Allow Frontend to access Backend
+# Allow Frontend to access Backend(services connect each other)
 resource "aws_security_group_rule" "backend_frontend_8080" {
   type                     = "ingress"
   from_port                = 8080
@@ -94,7 +94,7 @@ resource "aws_security_group_rule" "backend_frontend_8080" {
   security_group_id        = module.backend.sg_id
 }
 
-# Allow Bastion to access Backend
+# Allow Bastion to access Backend(services connect each other)
 resource "aws_security_group_rule" "backend_bastion_8080" {
   type                     = "ingress"
   from_port                = 8080
@@ -116,7 +116,7 @@ resource "aws_security_group_rule" "backend_bastion_22" {
 # Frontend Security Group Rules
 ########################################
 
-# Allow Bastion to access Frontend on HTTP
+# Allow Bastion to access Frontend on HTTP(services connect each other)
 resource "aws_security_group_rule" "frontend_bastion_80" {
   type                     = "ingress"
   from_port                = 80
@@ -126,7 +126,7 @@ resource "aws_security_group_rule" "frontend_bastion_80" {
   security_group_id        = module.frontend.sg_id
 }
 
-# Allow public SSH access to Frontend
+# Allow public SSH access to Frontend(services connect each other)
 resource "aws_security_group_rule" "frontend_public_22" {
   type              = "ingress"
   from_port         = 22
@@ -136,7 +136,7 @@ resource "aws_security_group_rule" "frontend_public_22" {
   security_group_id = module.frontend.sg_id
 }
 
-# Allow public HTTP access to Frontend
+# Allow public HTTP access to Frontend(services connect each other)
 resource "aws_security_group_rule" "frontend_public_80" {
   type              = "ingress"
   from_port         = 80
